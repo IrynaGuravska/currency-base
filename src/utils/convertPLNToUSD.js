@@ -7,5 +7,9 @@ export const convertPLNToUSD = (PLN) => {
     currency: 'USD'
   });
 
+  if(typeof PLN === 'string' || PLN === undefined) return NaN;
+  if(PLN < 0) return '$0.00';
+  if(typeof PLN !== 'number') return 'Error';
+  
   return formatter.format(PLNtoUSD).replace(/\u00a0/g, ' ');
 }
